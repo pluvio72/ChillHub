@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
-    <title>ChillHub</title>
-    <h1> Chill Hub </h1>
+    {% block title %} <title> Chill Hub</title> {% endblock %}
+    {% extends "bootstrap/base.html" %}
+
+    {% block content %}
+        <h1>Chill Hub</h1>
+    {% endblock %}
 </html>
