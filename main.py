@@ -11,6 +11,9 @@ os.environ['SPOTIPY_CLIENT_SECRET'] = spotify_client_secret
 
 spotify_api = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
+lz_uri = 'spotify:artist:36QJpDe2go2KgaRleHCDTp'
+print(spotify_api.artist_top_tracks(lz_uri))
+
 app = Flask(__name__)
 Bootstrap(app)
 
