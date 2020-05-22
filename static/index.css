@@ -31,4 +31,13 @@
     top: 1rem; 
     left: 10rem;
 }
+#playlist-container-youtube{
+    position: absolute;
+    right: 0.5rem;
+    top: 6rem;
+    width: 200px;
+}
+h4{
+    color: black;
+}
 .icon:hover{ cursor: pointer; }

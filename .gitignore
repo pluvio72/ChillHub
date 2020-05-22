@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # api keys
-client_secret_pc.json
+keys.py
