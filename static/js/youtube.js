@@ -2,11 +2,45 @@ const authorizeButton = document.getElementById('authorize')
 const executeButton = document.getElementById('execute')
 const videoContainer = document.getElementById('playlist-container-youtube')
 
+const DISCOVERY_DOCS =     'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'
+const SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
+
 /**
  * Sample JavaScript code for youtube.playlists.list
  * See instructions for running APIs Explorer code samples locally:
  * https://developers.google.com/explorer-help/guides/code_samples#javascript
  */
+
+// Load auth2 library
+function handleClientLoad() {
+    gapi.load('client:auth2', initClient)
+}
+
+// Init API client library and set up sign in listeners
+function initClient() {
+    gapi.client
+        .init({
+            discoveryDocs: [DISCOVERY_DOCS],
+            clientId: YOUTUBE_CLIENT_ID,
+            scope: SCOPES
+        })
+        .then(() => {
+            // Listen for sign in state changes
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            // Handle initial sign in state
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            return gapi.auth2
+        });
+}
+
+// Update UI sign in state changes
+function updateSigninStatus(isSignedIn) {
+    if (isSignedIn) {
+        loadClient()
+        execute()
+    } else {
+    }
+  }
 
 // Display channel data
 function showChannelData(data) {
@@ -33,7 +67,7 @@ function authenticate() {
 function loadClient() {
     gapi.client.setApiKey(YOUTUBE_API_KEY);
     return gapi.client
-        .load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+        .load(DISCOVERY_DOCS)
         .then(
             function () {
                 console.log("GAPI client loaded for API");
@@ -82,6 +116,6 @@ function execute() {
 
 gapi.load("client:auth2", function () {
     gapi.auth2.init({
-        client_id:  YOUTUBE_CLIENT_ID,
+        client_id: YOUTUBE_CLIENT_ID,
     });
 });
