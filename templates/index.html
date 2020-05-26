@@ -5,14 +5,28 @@
     {% block styles %} 
         {{super()}}
         <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock %}
 
     {% block content %}
         <div id="main">
             <img id="spotify-icon" class="icon" src="/static/images/spotify.png"/>
-            <img id="youtube-icon" onclick=authenticate().then(loadClient).then(execute) class="icon" src="/static/images/youtube.png"/>
+            <img id="youtube-icon" class="icon" src="/static/images/youtube.png"/>
             <img id="settings-icon" class="icon" src="/static/images/settings.png"/>
             <div id="playlist-container-youtube"></div>
+            <!-- Trigger/Open The Modal -->
+            <button id="for-youtube-search">YouTube search</button>
+            <!-- The Modal -->
+            <div id="youtubeModal" class="youtube-modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <input type="text" placeholder="Search for YouTube videos", id = "youtube-search">
+                    <button type="button" id="youtube-search-button"><i class="fa fa-search"></i></button>
+                    <div id="youtube-search-results"></div>
+                </div>
+            </div>
         </div>
         <div id="background"></div>
     <script>const YOUTUBE_CLIENT_ID = '{{YOUTUBE_CLIENT_ID}}';
