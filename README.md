@@ -1,6 +1,6 @@
 # ChillHub
 
-Test hgu
+Test hguk
 
 ## Setup (development)
  - export FLASK_ENV=development
