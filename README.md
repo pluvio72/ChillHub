@@ -1,6 +1,4 @@
 # ChillHub
-jkl
-Test hgukffkl
 
 ## Setup (development)
  - export FLASK_ENV=development
