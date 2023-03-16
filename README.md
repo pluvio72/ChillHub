@@ -1,4 +1,4 @@
-# ChillHub
+# ChillHub (Site)
 
 ## Setup (development)
  - export FLASK_ENV=development
